@@ -4,7 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
-import { fontFamilies, colors } from './src/constants';
+import { typography, colors } from './src/styles';
+import HomeScreen from './src/screens/HomeScreen';
 
 
 SplashScreen.preventAutoHideAsync();
@@ -12,10 +13,10 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [loaded, error] = useFonts({
-    [fontFamilies.regular]: require('./assets/fonts/Poppins-Regular.ttf'),
-    [fontFamilies.medium]: require('./assets/fonts/Poppins-Medium.ttf'),
-    [fontFamilies.semiBold]: require('./assets/fonts/Poppins-SemiBold.ttf'),
-    [fontFamilies.bold]: require('./assets/fonts/Poppins-Bold.ttf'),
+    [typography.fontFamily.regular]: require('./assets/fonts/Poppins-Regular.ttf'),
+    [typography.fontFamily.medium]: require('./assets/fonts/Poppins-Medium.ttf'),
+    [typography.fontFamily.semiBold]: require('./assets/fonts/Poppins-SemiBold.ttf'),
+    [typography.fontFamily.bold]: require('./assets/fonts/Poppins-Bold.ttf'),
   });
 
   useEffect(() => {
@@ -29,18 +30,11 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={{ fontFamily: fontFamilies.bold, fontSize: 20, color:colors.test }}>Roboto Regular</Text>
-      <Text style={{ fontFamily: fontFamilies.medium, fontSize: 20 ,color:colors.test}}>Roboto Bold</Text>
-    </View>
+    <>
+      <StatusBar translucent style='light' animated={true} backgroundColor='transparent' />
+      <HomeScreen/>
+        
+      
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.bgColor,
-    alignItems: 'center',
-    justifyContent: 'center',    
-  },
-});
