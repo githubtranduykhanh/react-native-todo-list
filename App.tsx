@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
-import { typography, colors } from './src/styles';
+import { typography, colors, globalStyles } from './src/styles';
 import HomeScreen from './src/screens/HomeScreen';
 
 
@@ -30,11 +30,11 @@ export default function App() {
   }
 
   return (
-    <>
-      <StatusBar translucent style='light' animated={true} backgroundColor='transparent' />
-      <HomeScreen/>
-        
+
+    <SafeAreaView style={globalStyles.safeAreaView}>
+          <StatusBar translucent style='light' animated={true} backgroundColor='transparent' />
+          <HomeScreen/>   
+    </SafeAreaView>
       
-    </>
   );
 }
